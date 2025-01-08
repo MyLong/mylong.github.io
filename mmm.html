@@ -1,1 +1,52 @@
-<htm><body>hello world<div id="input"></div></div></body><script>document.getElementById.innerHTML = window.netCareApp.invokeNative;console.log(window.netCareApp.invokeNative);</script></htm>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>执行输入内容并显示结果</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    #result {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      min-height: 30px;
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>输入并执行代码</h2>
+
+  <!-- 输入框 -->
+  <textarea id="inputCode" rows="4" cols="50" placeholder="请输入 JavaScript 代码"></textarea><br><br>
+
+  <!-- 执行按钮 -->
+  <button onclick="executeCode()">执行</button>
+
+  <!-- 显示区域 -->
+  <div id="result"></div>
+
+  <script>
+    function executeCode() {
+      // 获取输入框中的代码
+      const code = document.getElementById('inputCode').value;
+      const resultDiv = document.getElementById('result');
+
+      try {
+        // 使用 eval 执行代码，并捕获输出
+        const result = eval(code);
+        resultDiv.innerHTML = '执行结果：<br>' + result;
+      } catch (error) {
+        // 捕获错误并显示
+        resultDiv.innerHTML = '错误：<br>' + error.message;
+      }
+    }
+  </script>
+
+</body>
+</html>
